@@ -440,6 +440,7 @@ func (h *Headscale) createRouter(grpcMux *runtime.ServeMux) *mux.Router {
 
 	router.HandleFunc("/health", h.HealthHandler).Methods(http.MethodGet)
 	router.HandleFunc("/key", h.KeyHandler).Methods(http.MethodGet)
+	router.HandleFunc("/ssh", h.SSHKeyHandler).Methods(http.MethodGet)
 	router.HandleFunc("/register/{nkey}", h.RegisterWebAPI).Methods(http.MethodGet)
 	h.addLegacyHandlers(router)
 

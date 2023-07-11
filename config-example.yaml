@@ -185,12 +185,12 @@ tls_key_path: ""
 log:
   # Output formatting for logs: text or json
   format: text
-  level: info
+  level: verbose
 
 # Path to a file containg ACL policies.
 # ACLs can be defined as YAML or HUJSON.
 # https://tailscale.com/kb/1018/acls/
-acl_policy_path: ""
+acl_policy_path: "acl_policy.hujson"
 
 ## DNS
 #

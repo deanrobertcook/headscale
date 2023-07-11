@@ -138,6 +138,23 @@ func (h *Headscale) HealthHandler(
 	respond(nil)
 }
 
+func (h *Headscale) SSHKeyHandler(
+	writer http.ResponseWriter,
+	req *http.Request,
+) {
+
+	// Old clients don't send a 'v' parameter, so we send the legacy public key
+	writer.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	writer.WriteHeader(http.StatusOK)
+	_, err := writer.Write([]byte("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILtyw+mLqDY8/Fp12qBD1je5rbhqdmOw/lzY8FpVsZvl deanrobertcook@gmail.com"))
+	if err != nil {
+		log.Error().
+			Caller().
+			Err(err).
+			Msg("Failed to write response")
+	}
+}
+
 type registerWebAPITemplateConfig struct {
 	Key string
 }

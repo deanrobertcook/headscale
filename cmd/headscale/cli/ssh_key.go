@@ -1,14 +1,11 @@
 package cli
 
 import (
-	"fmt"
-
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
 )
 
 func init() {
-	fmt.Println("init() in cmd/headscale/cli/ssh_key.go")
 	rootCmd.AddCommand(sshKeysCmd)
 	sshKeysCmd.AddCommand(saveSSHKeyCmd)
 }
@@ -19,17 +16,6 @@ var sshKeysCmd = &cobra.Command{
 	Aliases: []string{"sshkey", "ssh"},
 	Args: func(cmd *cobra.Command, args []string) error {
 		return nil
-	},
-	Run: func(cmd *cobra.Command, args []string) {
-		app, err := getHeadscaleApp()
-		if err != nil {
-			log.Fatal().Caller().Err(err).Msg("Error initializing")
-		}
-
-		err = app.Serve()
-		if err != nil {
-			log.Fatal().Caller().Err(err).Msg("Error starting server")
-		}
 	},
 }
 
