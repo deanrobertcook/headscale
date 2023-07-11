@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -54,4 +55,5 @@ func main() {
 	})
 
 	cli.Execute()
+	fmt.Println("Hello, playground")
 }
